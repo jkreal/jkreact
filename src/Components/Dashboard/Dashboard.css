@@ -8,7 +8,6 @@
 }
 
 
-
 .content {
     background-color: #3c6fc2;
     padding: 1.0em;
@@ -88,8 +87,6 @@
 
 .logo {
     background-color: whitesmoke;
-
-    border: 2px solid blue;
 }
 
 .navbar-row {
@@ -97,7 +94,8 @@
 }
 
 .navbar-row img {
-    border: 5px solid blue;
+    border: 5px solid black;
+    border-bottom: 0;
     width: 25em;
 
     margin: auto;
@@ -174,7 +172,7 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .navbar-row img {
-        border: 5px solid red;
+        /* border: 5px solid red; */
     }
 
     .content {
@@ -185,7 +183,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .navbar-row img {
-        border: 7px solid purple;
+        /* border: 7px solid purple; */
         width: 30em;
     }
 
@@ -197,7 +195,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .navbar-row img {
-        border: 8px solid lightcoral;
+        /* border: 8px solid lightcoral; */
     }
 
     .cat {
@@ -216,7 +214,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1900px) {
     .navbar-row img {
-        border: 8px solid yellow;
+        /* border: 8px solid yellow; */
     }
 
     .cat {
@@ -235,7 +233,7 @@
 /* Extra extra large screens 2k/4k */
 @media only screen and (min-width: 2300px) {
     .navbar-row img {
-        border: 8px solid blue;
+        /* border: 8px solid blue; */
     }
 
     .cat {
