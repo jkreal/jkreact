@@ -1,9 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import reactDom from "react-dom";
+// import { Link } from "react-router-dom";
 import logo from "./cat-svgrepo-com.svg";
 
 let rightNow = new Date();
+let newUpdates = [];
+let act = false;
 const countDown = new Date(2021, 7, 30, 0, 0, 0, 0);
+
+let thatsacat = (
+  <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
+    <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
+      That's a cat.
+    </a>
+  </h1>
+);
 
 class Content extends React.Component {
   constructor(props) {
@@ -16,42 +27,67 @@ class Content extends React.Component {
         minutes: 0,
         seconds: 0,
       },
-
+      timeArray: [0, 1, 2, 3, 4, 5, 6, 7],
+      lastTime: [7, 6, 5, 4, 3, 2, 1, 0],
+      animationIndex: [],
     };
 
     this.countDown = this.countDown.bind(this);
+    this.timerUpdates = this.timerUpdates.bind(this);
   }
 
   componentDidMount() {
-    this.countDown();
     this.setState({
       timeLeft: countDown - rightNow,
     });
+    this.countDown();
     this.timer = setInterval(this.countDown, 1000);
+    this.timer2 = setInterval(this.timerUpdates, 500);
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
+    clearInterval(this.timer2);
   }
 
+  componentDidUpdate() {}
+
+  timerUpdates() {
+    act = !act;
+    newUpdates = [];
+
+    for (let i = 0; i < this.state.timeArray.length; ++i) {
+      if (this.state.timeArray[i] !== this.state.lastTime[i]) {
+        newUpdates.push(i);
+      }
+    }
+
+    this.setState({
+      animationIndex: newUpdates,
+    });
+  }
+
+  // This method is called whenever the timer counts down a second.
   countDown() {
+    // Calculates the time right now and sets our timeLeft equal to the time between Aug 30 and now
     rightNow = new Date();
 
     this.setState({
       timeLeft: countDown - rightNow,
+      lastTime: this.state.timeArray,
     });
 
+    // Sets up a couple of local variables to help calculate the time
     var time = {
       days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0,
     };
-
     let remainder = this.state.timeLeft;
     let realTime = this.state.timeLeft / 1000;
 
-    //Convert seconds remaining to a time object
+    //This ugly if else tree converts seconds to days, hours, minutes, and remaining seconds.
     if (realTime >= 86400) {
       time.days = Math.floor(realTime / 86400);
       remainder = realTime % 86400;
@@ -76,8 +112,31 @@ class Content extends React.Component {
       time.seconds = 0;
     }
 
+    // This sets the state for the displayTime object (deprecated) and an array of the time left.
     this.setState({
       displayTime: time,
+      timeArray: [
+        parseInt(time.days < 10 ? "0" : time.days.toString()[0]),
+        parseInt(
+          time.days >= 10 ? time.days.toString()[1] : time.days.toString()[0]
+        ),
+        parseInt(time.hours < 10 ? "0" : time.hours.toString()[0]),
+        parseInt(
+          time.hours >= 10 ? time.hours.toString()[1] : time.hours.toString()[0]
+        ),
+        parseInt(time.minutes < 10 ? "0" : time.minutes.toString()[0]),
+        parseInt(
+          time.minutes >= 10
+            ? time.minutes.toString()[1]
+            : time.minutes.toString()[0]
+        ),
+        parseInt(time.seconds < 10 ? "0" : time.seconds.toString()[0]),
+        parseInt(
+          time.seconds >= 10
+            ? time.seconds.toString()[1]
+            : time.seconds.toString()[0]
+        ),
+      ],
     });
   }
 
@@ -96,25 +155,35 @@ class Content extends React.Component {
             </button>
           </div>
 
-          {/* Change this to a foreach? */}
-          <h1 className="welcome-text">
-            <a style={{textDecoration: "none", color: "red"}} href="https://www.youtube.com/watch?v=NESCd6IFfLM">
-            {this.state.displayTime.days < 10
-              ? "0" + this.state.displayTime.days
-              : this.state.displayTime.days}
-            :
-            {this.state.displayTime.hours < 10
-              ? "0" + this.state.displayTime.hours
-              : this.state.displayTime.hours}
-            :
-            {this.state.displayTime.minutes < 10
-              ? "0" + this.state.displayTime.minutes
-              : this.state.displayTime.minutes}
-            :
-            {this.state.displayTime.seconds < 10
-              ? "0" + this.state.displayTime.seconds
-              : this.state.displayTime.seconds}
-            </a>
+          <h1 className="welcome-text animate__animated animate__bounceIn animate__delay-1s">
+            {/* This is what is returned when there is positive time left in the countdown */}
+            {this.state.timeLeft > 0 ? (
+              <a
+                style={{ textDecoration: "none", color: "red" }}
+                href="https://www.youtube.com/watch?v=NESCd6IFfLM"
+              >
+                {this.state.timeArray.map((digit, i) => {
+                  return (
+                    <span
+                      className={
+                        this.state.animationIndex[0] <= i && act === false
+                          ? "animate__animated animate__fadeIn"
+                          : ""
+                      }
+                      key={digit + Math.random()}
+                    >
+                      {/* This is what is actually in the time span */}
+
+                      {digit}
+                      {i % 2 === 1 && i < 6 ? ":" : ""}
+                    </span>
+                  );
+                })}
+              </a>
+            ) : (
+              // This is what is returned when there is no time left
+              <span>Happy Birthday, Mills.</span>
+            )}
           </h1>
 
           <img src={logo} className="App-logo" alt="logo" />
@@ -131,34 +200,41 @@ class Content extends React.Component {
         <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
           {/* <h1 className="welcome-text">Welcome to Hell!</h1> */}
 
-          {/* Change this to a foreach? */}
-          <h1 className="welcome-text">
-            <a style={{textDecoration: "none", color: "red"}} href="https://www.youtube.com/watch?v=NESCd6IFfLM">
-            {this.state.displayTime.days < 10
-              ? "0" + this.state.displayTime.days
-              : this.state.displayTime.days}
-            :
-            {this.state.displayTime.hours < 10
-              ? "0" + this.state.displayTime.hours
-              : this.state.displayTime.hours}
-            :
-            {this.state.displayTime.minutes < 10
-              ? "0" + this.state.displayTime.minutes
-              : this.state.displayTime.minutes}
-            :
-            {this.state.displayTime.seconds < 10
-              ? "0" + this.state.displayTime.seconds
-              : this.state.displayTime.seconds}
-            </a>
+          {/* The welcome text is currently a big h1 for a timer */}
+          <h1 className="welcome-text animate__animated animate__bounceIn animate__delay-1s">
+            {/* This is what is returned when there is positive time left in the countdown */}
+            {this.state.timeLeft > 0 ? (
+              <a
+                style={{ textDecoration: "none", color: "red" }}
+                href="https://www.youtube.com/watch?v=NESCd6IFfLM"
+              >
+                {this.state.timeArray.map((digit, i) => {
+                  return (
+                    <span
+                      className={
+                        this.state.animationIndex[0] <= i && act === false
+                          ? "animate__animated animate__fadeIn"
+                          : ""
+                      }
+                      key={digit + Math.random()}
+                    >
+                      {/* This is what is actually in the time span */}
+
+                      {digit}
+                      {i % 2 === 1 && i < 6 ? ":" : ""}
+                    </span>
+                  );
+                })}
+              </a>
+            ) : (
+              // This is what is returned when there is no time left
+              <span>Happy Birthday, Mills.</span>
+            )}
           </h1>
 
           <img src={logo} className="App-logo" alt="logo" />
 
-          <h1 className="cat">
-            <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
-              That's a cat.
-            </a>
-          </h1>
+          {thatsacat}
         </div>
       );
     }

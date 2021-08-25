@@ -1,4 +1,5 @@
 // import logo from "./cat-svgrepo-com.svg";
+import 'animate.css';
 import "./App.css";
 import Dashboard from "./Components/Dashboard";
 

@@ -127,6 +127,7 @@ class Dashboard extends React.Component {
         <div className="row">
         <Sidebar toggleSidebar={this.toggleSideBar}/>
           <Content mobile={this.state.mobileView} sidebar={this.state.showSidebar} toggleSidebar={this.toggleSideBar} />
+          {/* This blank space will only appear in Mobile Landscape. */}
           {this.state.mobileView === 1 ? (<div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>) : ''}
         </div>
 
