@@ -1,11 +1,11 @@
 import React from "react";
+import { act } from "react-dom/cjs/react-dom-test-utils.development";
 // import reactDom from "react-dom";
 // import { Link } from "react-router-dom";
 import logo from "./cat-svgrepo-com.svg";
 
 let rightNow = new Date();
 let newUpdates = [];
-let act = false;
 const countDown = new Date(2021, 7, 30, 0, 0, 0, 0);
 
 let thatsacat = (
@@ -30,6 +30,7 @@ class Content extends React.Component {
       timeArray: [0, 1, 2, 3, 4, 5, 6, 7],
       lastTime: [7, 6, 5, 4, 3, 2, 1, 0],
       animationIndex: [],
+      act: false
     };
 
     this.countDown = this.countDown.bind(this);
@@ -53,7 +54,9 @@ class Content extends React.Component {
   componentDidUpdate() {}
 
   timerUpdates() {
-    act = !act;
+    this.setState({
+      act: !this.state.act
+    });
     newUpdates = [];
 
     for (let i = 0; i < this.state.timeArray.length; ++i) {
@@ -166,7 +169,7 @@ class Content extends React.Component {
                   return (
                     <span
                       className={
-                        this.state.animationIndex[0] <= i && act === false
+                        this.state.animationIndex[0] <= i && this.state.act === false
                           ? "animate__animated animate__fadeIn"
                           : ""
                       }
@@ -212,7 +215,7 @@ class Content extends React.Component {
                   return (
                     <span
                       className={
-                        this.state.animationIndex[0] <= i && act === false
+                        this.state.animationIndex[0] <= i && this.state.act === false
                           ? "animate__animated animate__fadeIn"
                           : ""
                       }
