@@ -49,7 +49,12 @@ class Dashboard extends React.Component {
         showSidebar: true,
       });
       // Desktop/Laptop Sub 1080p
-    } else if (xwidth > 1000 && xwidth < 1900 && yheight > 700 && yheight < 1200) {
+    } else if (
+      xwidth > 1000 &&
+      xwidth < 1900 &&
+      yheight > 700 &&
+      yheight < 1200
+    ) {
       this.setState({
         mobileView: 4,
         showSidebar: true,
@@ -87,69 +92,34 @@ class Dashboard extends React.Component {
   }
 
   render() {
-
-    // For when the sidebar is shown and not mobile
-    if(this.state.showSidebar === true && this.state.mobileView > 1 )
     return (
       <div className="dashboard container-fluid">
         <Navbar />
-
         <div className="row">
-          <Sidebar toggleSidebar={this.toggleSideBar}/>
-          <Content mobile={this.state.mobileView} sidebar={this.state.showSidebar} toggleSidebar={this.toggleSideBar} />
-          <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
-        </div>
+          {this.state.showSidebar ? (
+            <Sidebar toggleSidebar={this.toggleSideBar} />
+          ) : this.state.mobileView < 1 ? (
+            ""
+          ) : (
+            <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
+          )}
 
+          <Content
+            mobile={this.state.mobileView}
+            sidebar={this.state.showSidebar}
+            toggleSidebar={this.toggleSideBar}
+          />
+          {this.state.mobileView > 0 ? (
+            <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
+          ) : (
+            ""
+          )}
+        </div>
         <div className="row">
           <Footer />
         </div>
       </div>
     );
-    // For when the viewport is landscape mobile without a sidebar
-    else if (this.state.mobileView < 1 && this.state.showSidebar === false) {
-      return (<div className="dashboard container-fluid">
-      <Navbar />
-
-      <div className="row">
-        <Content mobile={this.state.mobileView} sidebar={this.state.showSidebar} toggleSidebar={this.toggleSideBar} />
-      </div>
-
-      <div className="row">
-        <Footer />
-      </div>
-    </div>);
-    // Mobile with a sidebar
-    } else if (this.state.mobileView < 2 && this.state.showSidebar === true) {
-      return (<div className="dashboard container-fluid">
-        <Navbar />
-
-        <div className="row">
-        <Sidebar toggleSidebar={this.toggleSideBar}/>
-          <Content mobile={this.state.mobileView} sidebar={this.state.showSidebar} toggleSidebar={this.toggleSideBar} />
-          {/* This blank space will only appear in Mobile Landscape. */}
-          {this.state.mobileView === 1 ? (<div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>) : ''}
-        </div>
-
-        <div className="row">
-          <Footer />
-        </div>
-      </div>);
-      // No sidebar, non-mobile
-    } else {
-      return (<div className="dashboard container-fluid">
-        <Navbar />
-
-        <div className="row">
-          <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
-          <Content mobile={this.state.mobileView} sidebar={this.state.showSidebar} toggleSidebar={this.toggleSideBar} />
-          <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
-        </div>
-
-        <div className="row">
-          <Footer />
-        </div>
-      </div>);
-    };
   }
 }
 export default Dashboard;

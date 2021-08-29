@@ -147,12 +147,12 @@ class Content extends React.Component {
               Sidebar
             </button>
           ) : (
-            <button className="btn btn-danger btn-disabled">Placeholder</button>
+            <button className="btn btn-danger btn-disabled">thebest_thebest_thebest</button>
           )}
         </div>
 
         {/* This h1 is where the timer is nested in */}
-        <h1 className="welcome-text animate__animated animate__bounceIn animate__delay-1s">
+        <h1 className="welcome-text animate__animated animate__flipInY animate__delay-1s">
           {this.state.timeLeft > 0 ? (
             <a
               style={{ textDecoration: "none", color: "red" }}
@@ -185,12 +185,20 @@ class Content extends React.Component {
         </h1>
 
         {/* This is a cat, that spins. For the lolz. */}
-        <a href="http://whataboutbob.com"><img src={logo} className="App-logo" alt="logo" /></a>
-        
+        <a href="http://whataboutbob.com">
+          <img src={logo} className="App-logo" alt="logo" />
+        </a>
+
         <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
-          <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
-            That's a cat.
-          </a>
+          {this.state.timeLeft < 0 ? (
+            <a style={{ color: "black", textDecoration: "none" }} href="https://raft-wars.com/raftwars">
+              I hope it's a good one
+            </a>
+          ) : (
+            <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
+              That's a cat.
+            </a>
+          )}
         </h1>
       </div>
     );

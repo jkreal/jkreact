@@ -7,6 +7,9 @@
     /* min-height: 10vh; */
 }
 
+body {
+    background-color: red;
+}
 
 .content {
     background-color: #3c6fc2;
@@ -74,9 +77,9 @@
 .listitem{
     border: 5px solid black;
     border-radius: 20px;
-    min-height: 100px;
+    min-height: 8em;
     margin-bottom: 10px;
-    width: 105%;
+    width: 110%;
 }
 
 .listtitle {
@@ -149,13 +152,22 @@
     align-items: center;
 }
 
+.listitem{
+    background-color: lightsteelblue;
+    border: 6px solid black;
+    padding: 0;
+    margin: auto;
+
+    font-family: 'Concert One', cursive;
+}
+
 
 /* Media Queries -------------------------------------------------- */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .navbar-row img {
-        border: 5px solid orange;
+        /* border: 5px solid orange; */
         width: 20em;
         min-height: 15vh;
     }
@@ -171,6 +183,10 @@
     .welcome-text {
         width: 100%;
     }
+
+    .listitem {
+        width: 107%;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -179,8 +195,8 @@
         /* border: 5px solid red; */
     }
 
-    .content {
-        
+    .listitem {
+        width: 115%;
     }
 }
 
@@ -232,6 +248,10 @@
     .footer-text {
         width: 25%;
     }
+
+    .listitem {
+        width: 110%;
+    }
 }
 
 /* Extra extra large screens 2k/4k */
@@ -259,5 +279,9 @@
 
     .content {
         min-height: 75vh;
+    }
+
+    .listitem {
+        width: 107%;
     }
 }

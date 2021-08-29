@@ -2,13 +2,11 @@ import React from "react";
 
 import ListItem from "./ListItem";
 
-
+let listArray = ["Warning: Do NOT click anything;", "Warning: Do NOT chupacabra anything;", "Warning: Do NOT miss anything;", "You can do this."];
 const Sidebar = (props) => {
   return (
-    <div className="col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar">
-
+    <div className="col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar animate__animated animate__slideInDown">
       <div className="row">
-
         <div className="col-md-12 sidebar-button-col">
           <button
             type="button"
@@ -17,29 +15,11 @@ const Sidebar = (props) => {
           >
             Collapse
           </button>
-          <ListItem message="Warning: Do NOT click anything;"/>
-          <ListItem message="Warning: Do NOT chupacabra anything;"/>
+          {listArray.map((title, i) => {
+            return (<ListItem key={listArray[i] + i} title={listArray[i]} pos={i + 1}></ListItem>)
+          })}
         </div>
       </div>
-
-      {/* <div className="col-md-12">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <a href="#">Home</a>
-            </li>
-            <li className="breadcrumb-item">
-              <a href="#">Library</a>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              Data
-            </li>
-          </ol>
-        </nav>
-      </div>
-
-      <ListItem />
-      <ListItem /> */}
     </div>
   );
 };
