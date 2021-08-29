@@ -107,7 +107,6 @@ class Dashboard extends React.Component {
     );
     // For when the viewport is landscape mobile without a sidebar
     else if (this.state.mobileView < 1 && this.state.showSidebar === false) {
-      console.log("hit the gap")
       return (<div className="dashboard container-fluid">
       <Navbar />
 

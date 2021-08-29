@@ -1,11 +1,21 @@
 import React from "react";
 
-const ListItem = () => {
-  return (
-    <div className="row listitem">
-      <div className="col-md-12 listtitle"><h2>Warning: Do NOT click anything</h2></div>
-    </div>
-  );
+class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+  
+  render() {
+    return (
+      <div className="row listitem">
+        <div className="col-md-12 listtitle"><h2>{this.props.message}</h2></div>
+      </div>
+    );
+  }
+  
 };
 
 export default ListItem;

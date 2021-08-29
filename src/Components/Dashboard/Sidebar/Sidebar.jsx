@@ -2,6 +2,7 @@ import React from "react";
 
 import ListItem from "./ListItem";
 
+
 const Sidebar = (props) => {
   return (
     <div className="col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar">
@@ -16,8 +17,8 @@ const Sidebar = (props) => {
           >
             Collapse
           </button>
-          <ListItem/>
-          <ListItem/>
+          <ListItem message="Warning: Do NOT click anything;"/>
+          <ListItem message="Warning: Do NOT chupacabra anything;"/>
         </div>
       </div>
 

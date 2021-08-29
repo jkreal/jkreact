@@ -8,29 +8,15 @@ let rightNow = new Date();
 let newUpdates = [];
 const countDown = new Date(2021, 7, 30, 0, 0, 0, 0);
 
-let thatsacat = (
-  <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
-    <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
-      That's a cat.
-    </a>
-  </h1>
-);
-
 class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       timeLeft: countDown - rightNow,
-      displayTime: {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-      },
       timeArray: [0, 1, 2, 3, 4, 5, 6, 7],
       lastTime: [7, 6, 5, 4, 3, 2, 1, 0],
       animationIndex: [],
-      act: false
+      act: false,
     };
 
     this.countDown = this.countDown.bind(this);
@@ -55,16 +41,17 @@ class Content extends React.Component {
 
   timerUpdates() {
     this.setState({
-      act: !this.state.act
+      act: !this.state.act,
     });
-    newUpdates = [];
 
+    // Every timer tick, a new array is created and details which positions updated since the
+    // Last timer tick.
+    newUpdates = [];
     for (let i = 0; i < this.state.timeArray.length; ++i) {
       if (this.state.timeArray[i] !== this.state.lastTime[i]) {
         newUpdates.push(i);
       }
     }
-
     this.setState({
       animationIndex: newUpdates,
     });
@@ -118,9 +105,8 @@ class Content extends React.Component {
       time.seconds = 0;
     }
 
-    // This sets the state for the displayTime object (deprecated) and an array of the time left.
+    // This sets the state for an array of the time left.
     this.setState({
-      displayTime: time,
       timeArray: [
         parseInt(time.days < 10 ? "0" : time.days.toString()[0]),
         parseInt(
@@ -148,102 +134,66 @@ class Content extends React.Component {
 
   render() {
     //In this case, the sidebar is disabled.
-    if (this.props.sidebar === false) {
-      return (
-        <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
-          <div className="row">
-            {/* This button only appears if the sidebar is disabled */}
+
+    return (
+      <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
+        <div className="row">
+          {/* This button only appears if the sidebar is disabled */}
+          {!this.props.sidebar ? (
             <button
               className="btn btn-warning"
               onClick={this.props.toggleSidebar}
             >
               Sidebar
             </button>
-          </div>
+          ) : (
+            <button className="btn btn-danger btn-disabled">Placeholder</button>
+          )}
+        </div>
 
-          <h1 className="welcome-text animate__animated animate__bounceIn animate__delay-1s">
-            {/* This is what is returned when there is positive time left in the countdown */}
-            {this.state.timeLeft > 0 ? (
-              <a
-                style={{ textDecoration: "none", color: "red" }}
-                href="https://www.youtube.com/watch?v=NESCd6IFfLM"
-              >
-                {this.state.timeArray.map((digit, i) => {
-                  return (
-                    <span
-                      className={
-                        this.state.animationIndex[0] <= i && this.state.act === false
-                          ? "animate__animated animate__fadeIn"
-                          : ""
-                      }
-                      key={digit + Math.random()}
-                    >
-                      {/* This is what is actually in the time span */}
-
-                      {digit}
-                      {i % 2 === 1 && i < 6 ? ":" : ""}
-                    </span>
-                  );
-                })}
-              </a>
-            ) : (
-              // This is what is returned when there is no time left
-              <span>Happy Birthday, Mills.</span>
-            )}
-          </h1>
-
-          <img src={logo} className="App-logo" alt="logo" />
-
-          <h1 className="cat">
-            <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
-              That's a cat.
+        {/* This h1 is where the timer is nested in */}
+        <h1 className="welcome-text animate__animated animate__bounceIn animate__delay-1s">
+          {this.state.timeLeft > 0 ? (
+            <a
+              style={{ textDecoration: "none", color: "red" }}
+              href="https://www.youtube.com/watch?v=NESCd6IFfLM"
+            >
+              {/* Maps out the time remaining using the timeArray and animationIndex */}
+              {this.state.timeArray.map((digit, i) => {
+                return (
+                  <span
+                    className={
+                      this.state.animationIndex[0] <= i &&
+                      this.state.act === false
+                        ? "animate__animated animate__fadeIn"
+                        : ""
+                    }
+                    key={digit + Math.random()}
+                  >
+                    {/* This is what is actually in the time span */}
+                    {digit}
+                    {i % 2 === 1 && i < 6 ? ":" : ""}
+                  </span>
+                );
+              })}
             </a>
-          </h1>
-        </div>
-      );
-    } else {
-      return (
-        <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
-          {/* <h1 className="welcome-text">Welcome to Hell!</h1> */}
+          ) : (
+            // End of the conditional
+            // This is what is returned when there is no time left
+            <span>Happy Birthday, Mills.</span>
+          )}
+        </h1>
 
-          {/* The welcome text is currently a big h1 for a timer */}
-          <h1 className="welcome-text animate__animated animate__bounceIn animate__delay-1s">
-            {/* This is what is returned when there is positive time left in the countdown */}
-            {this.state.timeLeft > 0 ? (
-              <a
-                style={{ textDecoration: "none", color: "red" }}
-                href="https://www.youtube.com/watch?v=NESCd6IFfLM"
-              >
-                {this.state.timeArray.map((digit, i) => {
-                  return (
-                    <span
-                      className={
-                        this.state.animationIndex[0] <= i && this.state.act === false
-                          ? "animate__animated animate__fadeIn"
-                          : ""
-                      }
-                      key={digit + Math.random()}
-                    >
-                      {/* This is what is actually in the time span */}
-
-                      {digit}
-                      {i % 2 === 1 && i < 6 ? ":" : ""}
-                    </span>
-                  );
-                })}
-              </a>
-            ) : (
-              // This is what is returned when there is no time left
-              <span>Happy Birthday, Mills.</span>
-            )}
-          </h1>
-
-          <img src={logo} className="App-logo" alt="logo" />
-
-          {thatsacat}
-        </div>
-      );
-    }
+        {/* This is a cat, that spins. For the lolz. */}
+        <a href="http://whataboutbob.com"><img src={logo} className="App-logo" alt="logo" /></a>
+        
+        <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
+          <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
+            That's a cat.
+          </a>
+        </h1>
+      </div>
+    );
   }
 }
 
