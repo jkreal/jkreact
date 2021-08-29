@@ -88,7 +88,7 @@ class Content extends React.Component {
       seconds: 0,
     };
     let remainder = this.state.timeLeft;
-    let realTime = this.state.timeLeft / 1000;
+    let realTime = Math.floor(this.state.timeLeft / 1000);
 
     //This ugly if else tree converts seconds to days, hours, minutes, and remaining seconds.
     if (realTime >= 86400) {
@@ -96,18 +96,21 @@ class Content extends React.Component {
       remainder = realTime % 86400;
     } else {
       time.days = 0;
+      remainder = realTime;
     }
     if (realTime >= 3600) {
       time.hours = Math.floor(remainder / 3600);
       remainder %= 3600;
     } else {
       time.hours = 0;
+      remainder = realTime;
     }
     if (realTime >= 60) {
       time.minutes = Math.floor(remainder / 60);
       remainder %= 60;
     } else {
       time.minutes = 0;
+      remainder = realTime;
     }
     if (remainder > 0) {
       time.seconds = Math.floor(remainder);
