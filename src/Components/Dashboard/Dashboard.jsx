@@ -73,7 +73,9 @@ class Dashboard extends React.Component {
       });
     }
 
-    console.log("your resolution is " + xwidth + "px by " + yheight + "px.");
+    console.log(
+      "your viewport resolution is " + xwidth + "px by " + yheight + "px."
+    );
   }
 
   toggleSideBar() {
@@ -88,10 +90,13 @@ class Dashboard extends React.Component {
   }
 
   componentWillUnmount() {
+    // We must remove our event listeners on unmount
     window.removeEventListener("resize", this.updateViewState);
   }
 
   render() {
+    // This will render the entirety of the dashboard together,
+    // Depending on what kind of screen they are using to view the site.
     return (
       <div className="dashboard container-fluid">
         <Navbar />
@@ -101,7 +106,13 @@ class Dashboard extends React.Component {
           ) : this.state.mobileView < 1 ? (
             ""
           ) : (
-            <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
+            <div
+              className={
+                this.state.mobileView === 1
+                  ? "blank-content col-xs-12 col-sm-12 col-lg-3 col-md-3"
+                  : "blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"
+              }
+            ></div>
           )}
 
           <Content

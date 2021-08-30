@@ -1,5 +1,4 @@
 import React from "react";
-import { act } from "react-dom/cjs/react-dom-test-utils.development";
 // import reactDom from "react-dom";
 // import { Link } from "react-router-dom";
 import logo from "./cat-svgrepo-com.svg";
@@ -136,7 +135,7 @@ class Content extends React.Component {
     //In this case, the sidebar is disabled.
 
     return (
-      <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
+      <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 content">
         <div className="row">
           {/* This button only appears if the sidebar is disabled */}
           {!this.props.sidebar ? (
@@ -185,14 +184,14 @@ class Content extends React.Component {
         </h1>
 
         {/* This is a cat, that spins. For the lolz. */}
-        <a href="http://whataboutbob.com">
+        <a href="#">
           <img src={logo} className="App-logo" alt="logo" />
         </a>
 
         <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
           {this.state.timeLeft < 0 ? (
             <a style={{ color: "black", textDecoration: "none" }} href="https://raft-wars.com/raftwars">
-              I hope it's a good one
+              I hope it's a good year for you. Stay Awesome.
             </a>
           ) : (
             <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">

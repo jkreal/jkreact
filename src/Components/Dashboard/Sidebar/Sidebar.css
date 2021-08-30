@@ -1,0 +1,31 @@
+.sidebar {
+    background-color: #183da3;
+
+    border: 4px outset black;
+    border: 6px solid black;
+
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listitem{
+    border: 5px solid black;
+    border-radius: 20px;
+    min-height: 8em;
+    margin-bottom: 0.5em;
+}
+
+.listtitle {
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-col {
+    margin: auto;
+}
+
+.sidebar-button {
+    
+}

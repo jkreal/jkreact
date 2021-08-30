@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: red;
+    background-color: #3c6fc2;
 }
 
 .content {
@@ -22,39 +22,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.sidebar {
-    background-color: #183da3;
-
-    border: 4px outset black;
-    border: 6px solid black;
-
-    min-height: 65vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.sidebar-buttons {
-
-}
-
-.sidebar-button {
-
-}
-
-.sidebar-button-col {
-
-}
-
-.bc {
-
-}
-
-.sidebar-breadcrumb-col {
-    align-items: center;
-    align-content: center;
 }
 
 .breadcrumb {
@@ -74,20 +41,6 @@ body {
     border-right: 0;
 }
 
-.listitem{
-    border: 5px solid black;
-    border-radius: 20px;
-    min-height: 8em;
-    margin-bottom: 10px;
-    width: 110%;
-}
-
-.listtitle {
-    padding: 5px;
-    margin: 5px;
-}
-
-
 .logo {
     background-color: whitesmoke;
 }
@@ -104,7 +57,6 @@ body {
     margin: auto;
 }
 
-
 .welcome-text {
     font-family: 'Dancing Script', cursive;
     background-color: whitesmoke;
@@ -116,7 +68,6 @@ body {
     border: 3px solid black;
     border-radius: 15px;
 }
-
 
 .cat {
     font-family: 'Dancing Script', cursive;
@@ -187,7 +138,12 @@ body {
     .listitem {
         width: 107%;
     }
+
+    .cat {
+        width: 100%;
+    }
 }
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -219,11 +175,11 @@ body {
     }
 
     .cat {
-        width: 35%;
+        width: 67%;
     }
 
     .welcome-text {
-        width: 40%;
+        width: 67%;
     }
 
     .footer-text {
@@ -238,7 +194,7 @@ body {
     }
 
     .cat {
-        width: 33%;
+        width: 67%;
     }
 
     .welcome-text {
