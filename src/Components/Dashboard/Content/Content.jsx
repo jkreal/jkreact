@@ -5,7 +5,7 @@ import logo from "./cat-svgrepo-com.svg";
 
 let rightNow = new Date();
 let newUpdates = [];
-const countDown = new Date(2021, 7, 30, 0, 0, 0, 0);
+const countDown = new Date(2021, 8, 17, 0, 0, 0, 0);
 
 class Content extends React.Component {
   constructor(props) {
@@ -179,7 +179,7 @@ class Content extends React.Component {
           ) : (
             // End of the conditional
             // This is what is returned when there is no time left
-            <span>Happy Birthday, Mills.</span>
+            <span>Happy Rude Awakening Day!</span>
           )}
         </h1>
 
@@ -191,11 +191,11 @@ class Content extends React.Component {
         <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
           {this.state.timeLeft < 0 ? (
             <a style={{ color: "black", textDecoration: "none" }} href="https://raft-wars.com/raftwars">
-              I hope it's a good year for you. Stay Awesome.
+              The Rude Awakening
             </a>
           ) : (
-            <a style={{ color: "black" }} href="https://raft-wars.com/raftwars">
-              That's a cat.
+            <a style={{ color: "black", textDecoration: "none" }} href="https://raft-wars.com/raftwars">
+              I'm told all the cats would dig me. I still don't get it.
             </a>
           )}
         </h1>
