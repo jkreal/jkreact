@@ -108,9 +108,9 @@ class Dashboard extends React.Component {
           ) : (
             <div
               className={
-                this.state.mobileView === 1
-                  ? "blank-content col-xs-12 col-sm-12 col-lg-3 col-md-3"
-                  : "blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"
+                this.state.mobileView >= 1
+                  ? "blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"
+                  : (<div>A div</div>)
               }
             ></div>
           )}

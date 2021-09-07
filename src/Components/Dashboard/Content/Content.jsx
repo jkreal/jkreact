@@ -135,7 +135,7 @@ class Content extends React.Component {
     //In this case, the sidebar is disabled.
 
     return (
-      <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 content">
+      <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
         <div className="row">
           {/* This button only appears if the sidebar is disabled */}
           {!this.props.sidebar ? (
@@ -195,7 +195,7 @@ class Content extends React.Component {
             </a>
           ) : (
             <a style={{ color: "black", textDecoration: "none" }} href="https://raft-wars.com/raftwars">
-              I'm told all the cats would dig me. I still don't get it.
+              "Our time together was short, but it was the best time of my life."
             </a>
           )}
         </h1>

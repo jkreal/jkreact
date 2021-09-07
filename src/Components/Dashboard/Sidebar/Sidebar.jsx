@@ -19,7 +19,7 @@ let messageArray = [
 
 const Sidebar = (props) => {
   return (
-    <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebar animate__animated animate__slideInDown">
+    <div className="col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar animate__animated animate__slideInDown">
       <div className="row">
         <div className="col-md-12 sidebar-col">
           <button
