@@ -1,13 +1,15 @@
 import React from "react";
-// import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./Dashboard.css";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import Content from "./Content";
 import Footer from "./Footer";
-// // import MainContent from "./MainContent";
-// import { Route } from "react-router-dom";
+
+import Games from "./Games";
+import Apps from "./Apps";
+import Socials from "./Socials";
 
 class Dashboard extends React.Component {
   constructor() {
@@ -15,11 +17,14 @@ class Dashboard extends React.Component {
     this.state = {
       mobileView: 5,
       showSidebar: true,
+      page: 0,
     };
     this.updateViewState = this.updateViewState.bind(this);
     this.toggleSideBar = this.toggleSideBar.bind(this);
   }
 
+  // This method runs every time the window is resized.
+  // It determines whether the sidebar is shown and sets a variable in state
   updateViewState() {
     let xwidth = document.documentElement.clientWidth;
     let yheight = document.documentElement.clientHeight;
@@ -72,10 +77,6 @@ class Dashboard extends React.Component {
         showSidebar: true,
       });
     }
-
-    console.log(
-      "your viewport resolution is " + xwidth + "px by " + yheight + "px."
-    );
   }
 
   toggleSideBar() {
@@ -98,38 +99,51 @@ class Dashboard extends React.Component {
     // This will render the entirety of the dashboard together,
     // Depending on what kind of screen they are using to view the site.
     return (
-      <div className="dashboard container-fluid">
-        <Navbar />
-        <div className="row">
-          {this.state.showSidebar ? (
-            <Sidebar toggleSidebar={this.toggleSideBar} />
-          ) : this.state.mobileView < 1 ? (
-            ""
-          ) : (
-            <div
-              className={
-                this.state.mobileView >= 1
-                  ? "blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"
-                  : (<div>A div</div>)
-              }
-            ></div>
-          )}
+      <Router>
+        <div className="dashboard container-fluid">
+          <Navbar />
+          <div className="row">
+            {this.state.showSidebar ? (
+              <Sidebar toggleSidebar={this.toggleSideBar} />
+            ) : this.state.mobileView < 1 ? (
+              ""
+            ) : (
+              <div
+                className={
+                  this.state.mobileView >= 1 ? (
+                    "blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"
+                  ) : (
+                    <div>A div</div>
+                  )
+                }
+              ></div>
+            )}
+            <Switch>
+              <Route path="/games"><Games/></Route>
+              <Route path="/apps"><Apps/></Route>
+              <Route path="/socials"><Socials/></Route>
+              <Route path="/">
+                <Content
+                  mobile={this.state.mobileView}
+                  sidebar={this.state.showSidebar}
+                  toggleSidebar={this.toggleSideBar}
+                  page={this.state.page}
+                />
+              </Route>
+            </Switch>
 
-          <Content
-            mobile={this.state.mobileView}
-            sidebar={this.state.showSidebar}
-            toggleSidebar={this.toggleSideBar}
-          />
-          {this.state.mobileView > 0 ? (
-            <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
-          ) : (
-            ""
-          )}
+            {this.state.mobileView > 0 ? (
+              <div className="blank-content col-xs-12 col-sm-12 col-lg-2 col-md-2"></div>
+            ) : (
+              ""
+            )}
+          </div>
+
+          <div className="row">
+            <Footer />
+          </div>
         </div>
-        <div className="row">
-          <Footer />
-        </div>
-      </div>
+      </Router>
     );
   }
 }
