@@ -73,7 +73,7 @@ class Content extends React.Component {
       minutes: 0,
       seconds: 0,
     };
-    let remainder = this.state.timeLeft;
+    let remainder;
     let realTime = Math.floor(this.state.timeLeft / 1000);
 
     //This ugly if else tree converts seconds to days, hours, minutes, and remaining seconds.
@@ -84,6 +84,7 @@ class Content extends React.Component {
       time.days = 0;
       remainder = realTime;
     }
+
     if (realTime >= 3600) {
       time.hours = Math.floor(remainder / 3600);
       remainder %= 3600;
@@ -91,6 +92,7 @@ class Content extends React.Component {
       time.hours = 0;
       remainder = realTime;
     }
+
     if (realTime >= 60) {
       time.minutes = Math.floor(remainder / 60);
       remainder %= 60;
@@ -98,14 +100,16 @@ class Content extends React.Component {
       time.minutes = 0;
       remainder = realTime;
     }
+
     if (remainder > 0) {
       time.seconds = Math.floor(remainder);
     } else {
       time.seconds = 0;
     }
 
-    // This sets the state for an array of the time left.
     this.setState({
+      // Saves the calculated time object as an array. We used an array so that we can
+      // easily keep track of which number needs an animation.
       timeArray: [
         parseInt(time.days < 10 ? "0" : time.days.toString()[0]),
         parseInt(
@@ -132,21 +136,23 @@ class Content extends React.Component {
   }
 
   render() {
-    //In this case, the sidebar is disabled.
 
     return (
       <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
         <div className="row">
-          {/* This button only appears if the sidebar is disabled */}
           {!this.props.sidebar ? (
             <button
+              // This button appears if the sidebar is disabled
               className="btn btn-warning"
               onClick={this.props.toggleSidebar}
             >
               Sidebar
             </button>
           ) : (
-            <button className="btn btn-danger btn-disabled">thebest_thebest_thebest</button>
+            // Otherwise, this button appears
+            <button className="btn btn-danger btn-disabled">
+              thebest_thebest_thebest
+            </button>
           )}
         </div>
 
@@ -179,7 +185,7 @@ class Content extends React.Component {
           ) : (
             // End of the conditional
             // This is what is returned when there is no time left
-            <span>Happy Rude Awakening Day!</span>
+            <span>Welcome to my shitshow.</span>
           )}
         </h1>
 
@@ -190,12 +196,19 @@ class Content extends React.Component {
 
         <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
           {this.state.timeLeft < 0 ? (
-            <a style={{ color: "black", textDecoration: "none" }} href="https://raft-wars.com/raftwars">
-              The Rude Awakening
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="https://raft-wars.com/raftwars"
+            >
+              Humanity can, to be completely honest with you, just go fuck itself.
             </a>
           ) : (
-            <a style={{ color: "black", textDecoration: "none" }} href="https://raft-wars.com/raftwars">
-              "Our time together was short, but it was the best time of my life."
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="https://raft-wars.com/raftwars"
+            >
+              "Our time together was short, but it was the best time of my
+              life."
             </a>
           )}
         </h1>

@@ -5,6 +5,7 @@ class ListItem extends React.Component {
     super(props);
     this.state = {
       title: this.props.title,
+      lastEvent: null
     };
 
     this.clickTask = this.clickTask.bind(this);
@@ -12,33 +13,40 @@ class ListItem extends React.Component {
     this.mouseLeave = this.mouseLeave.bind(this);
   }
 
+  componentDidMount() {
+  }
+
+  componentWillUnmount() {
+
+  }
+
   clickTask = (event) => {
 
+    // event.target.style.minHeight = "50px";
   }
 
   mouseEnter = (event) => {
-    // event.target.style. = "30em";
+    // event.target.style.width = "100%";
   }
 
   mouseLeave = (event) => {
-    // event.target.style.marginLeft = "3em";
+    // event.target.style.marginLeft = "auto";
+    // event.target.style.width = "50%";
   }
 
   render() {
     return (
-      <div
+      <li
         onClick={this.clickTask}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
-        className={"row listitem animate__animated animate__flipInY animate__delay-" + this.props.pos + "s"}
+        className={"row listitem animate__animated animate__flipInY animate__delay-" + (this.props.pos % 1 + 1) + "s"}
       >
-        <div className="col-md-12">
           <h3 className="listtitle">
             {this.props.pos + ". " + this.props.title}
           </h3>
           <p className="messagetext">{this.props.message}</p>
-        </div>
-      </div>
+      </li>
     );
   }
 }
