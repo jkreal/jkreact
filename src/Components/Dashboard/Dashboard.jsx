@@ -17,7 +17,6 @@ class Dashboard extends React.Component {
     this.state = {
       mobileView: 5,
       showSidebar: true,
-      page: 0,
     };
     this.updateViewState = this.updateViewState.bind(this);
     this.toggleSideBar = this.toggleSideBar.bind(this);
@@ -127,7 +126,6 @@ class Dashboard extends React.Component {
                   mobile={this.state.mobileView}
                   sidebar={this.state.showSidebar}
                   toggleSidebar={this.toggleSideBar}
-                  page={this.state.page}
                 />
               </Route>
             </Switch>
