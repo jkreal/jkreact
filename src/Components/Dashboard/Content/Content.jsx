@@ -5,7 +5,7 @@ import logo from "./cat-svgrepo-com.svg";
 
 let rightNow = new Date();
 let newUpdates = [];
-const countDown = new Date(2021, 8, 17, 0, 0, 0, 0);
+const countDown = new Date(2021, 9, 5, 0, 0, 0, 0);
 
 class Content extends React.Component {
   constructor(props) {
@@ -108,7 +108,7 @@ class Content extends React.Component {
     }
 
     this.setState({
-      // Saves the calculated time object as an array. We used an array so that we can
+      // Saves the calculated time object as an array. We use an array so that we can
       // easily keep track of which number needs an animation.
       timeArray: [
         parseInt(time.days < 10 ? "0" : time.days.toString()[0]),
@@ -194,21 +194,23 @@ class Content extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
         </a>
 
+            {/* This is the text at the bottom of the page */}
         <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
           {this.state.timeLeft < 0 ? (
             <a
               style={{ color: "black", textDecoration: "none" }}
               href="https://raft-wars.com/raftwars"
             >
-              Humanity can, to be completely honest with you, just go fuck itself.
+              {/* Text when the difference in time is negative, or has already expired */}
+              Humanity can, to be completely honest with you, just go fuck itself. Except you; you're cool.
             </a>
           ) : (
             <a
               style={{ color: "black", textDecoration: "none" }}
               href="https://raft-wars.com/raftwars"
             >
-              "Our time together was short, but it was the best time of my
-              life."
+              {/* This text shows while the timer still has time left */}
+              Humanity can, to be completely honest with you, just go fuck itself. Except you; you're cool.
             </a>
           )}
         </h1>
