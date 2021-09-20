@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
+// import { Modal, Button } from "react-bootstrap";
 
 import "./Dashboard.css";
 import Sidebar from "./Sidebar";
@@ -11,6 +11,24 @@ import Footer from "./Footer";
 import Games from "./Games";
 import Apps from "./Apps";
 import Socials from "./Socials";
+
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// import { getDatabase } from "firebase/database";
+import { GoogleAuthProvider, FacebookAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+
+const firebaseConfig = require('./firebase-config');
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+// var database = getDatabase(app);
+
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+
+const auth = getAuth(app);
+
+console.log(analytics);
+// console.log(database);
 
 class Dashboard extends React.Component {
   constructor() {
@@ -30,11 +48,12 @@ class Dashboard extends React.Component {
   updateViewState() {
     let xwidth = document.documentElement.clientWidth;
     let yheight = document.documentElement.clientHeight;
+    console.log("the viewport is " + xwidth + "px by " + yheight + "px")
 
     // Phone in portrait mode
     if (xwidth < 600) {
       this.setState({
-        mobileView: 0,
+        mobileView: 0, 
         showSidebar: false,
       });
       // Phone in Landscape mode
@@ -79,6 +98,7 @@ class Dashboard extends React.Component {
         showSidebar: true,
       });
     }
+
   }
 
   toggleSideBar() {
@@ -144,6 +164,7 @@ class Dashboard extends React.Component {
                   mobile={this.state.mobileView}
                   sidebar={this.state.showSidebar}
                   toggleSidebar={this.toggleSideBar}
+                  signin={this.signInWithPopup}
                 />
               </Route>
             </Switch>
