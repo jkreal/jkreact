@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 
 import "./Dashboard.css";
 import Sidebar from "./Sidebar";
@@ -20,6 +21,8 @@ class Dashboard extends React.Component {
     };
     this.updateViewState = this.updateViewState.bind(this);
     this.toggleSideBar = this.toggleSideBar.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this);
   }
 
   // This method runs every time the window is resized.
@@ -94,6 +97,10 @@ class Dashboard extends React.Component {
     window.removeEventListener("resize", this.updateViewState);
   }
 
+  handleClose() {}
+
+  handleShow() {}
+
   render() {
     // This will render the entirety of the dashboard together,
     // Depending on what kind of screen they are using to view the site.
@@ -103,7 +110,12 @@ class Dashboard extends React.Component {
           <Navbar />
           <div className="row">
             {this.state.showSidebar ? (
-              <Sidebar toggleSidebar={this.toggleSideBar} />
+              <Sidebar
+                toggleSidebar={this.toggleSideBar}
+                handleShow={this.handleShow}
+                handleClose={this.handleClose}
+                mobile={this.state.mobileView}
+              />
             ) : this.state.mobileView < 1 ? (
               ""
             ) : (
@@ -118,9 +130,15 @@ class Dashboard extends React.Component {
               ></div>
             )}
             <Switch>
-              <Route path="/games"><Games/></Route>
-              <Route path="/apps"><Apps/></Route>
-              <Route path="/socials"><Socials/></Route>
+              <Route path="/games">
+                <Games />
+              </Route>
+              <Route path="/apps">
+                <Apps />
+              </Route>
+              <Route path="/socials">
+                <Socials />
+              </Route>
               <Route path="/">
                 <Content
                   mobile={this.state.mobileView}

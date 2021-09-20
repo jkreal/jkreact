@@ -105,9 +105,7 @@ body {
 
 .listitem{
     background-color: lightsteelblue;
-    border: 6px solid black;
-    padding: 0;
-    margin: auto;
+    /* border: 6px solid black; */
 
     font-family: 'Concert One', cursive;
     /* text-shadow: 2px 2px; */
@@ -239,6 +237,7 @@ body {
     }
 
     .listitem {
-        width: 107%;
+        width: 100%;
     }
+    
 }

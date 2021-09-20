@@ -8,7 +8,7 @@ class ListItem extends React.Component {
       title: this.props.title,
       hover: false,
       classnames: "row listitem animate__animated ",
-      animation: "animate__flipInY"
+      animation: "animate__flipInY",
     };
 
     this.clickTask = this.clickTask.bind(this);
@@ -19,7 +19,7 @@ class ListItem extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        animation: ""
+        animation: "",
       });
     }, 1000);
   }
@@ -29,12 +29,12 @@ class ListItem extends React.Component {
   clickTask = (event) => {
     // event.target.style.minHeight = "50px";
     this.setState({
-      animation: "animate__tada"
+      animation: "animate__tada",
     });
 
     setTimeout(() => {
       this.setState({
-        animation: ""
+        animation: "",
       });
     }, 2000);
   };
@@ -43,8 +43,7 @@ class ListItem extends React.Component {
     // event.target.style.width = "100%";
     // event.target.style.border = "5px solid red"
     this.setState({
-      hover: true,
-      animation: "rollIn"
+      hover: true
     });
   };
 
@@ -62,9 +61,7 @@ class ListItem extends React.Component {
         onClick={this.clickTask}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
-        className={
-          this.state.classnames + "" + this.state.animation
-        }
+        className={this.state.classnames + "" + this.state.animation}
         style={
           this.state.hover
             ? { marginLeft: "1em", width: "133%", boxShadow: "15px 8px" }

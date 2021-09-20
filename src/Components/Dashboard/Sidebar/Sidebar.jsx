@@ -2,6 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 
 import ListItem from "./ListItem";
+import {Button} from "react-bootstrap";
 
 let listArray = ["Home", "Games", "Apps", "Socials"];
 let messageArray = [
@@ -13,16 +14,10 @@ let messageArray = [
 
 const Sidebar = (props) => {
   return (
-    <div className="col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar animate__animated animate__slideInDown">
+    <div className={"col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar animate__animated" + (props.mobile === 0 ? " animate__slideInDown" : " animate__bounceInLeft")}>
       <div className="row">
         <div className="col-md-12 sidebar-col">
-          <button
-            type="button"
-            className="btn btn-warning sidebar-button"
-            onClick={props.toggleSidebar}
-          >
-            Collapse
-          </button>
+          {!props.mobile > 0 ? (<Button onClick={props.toggleSidebar} variant="warning">Collapse</Button>) : ""}
 
           {/* This maps the listArray to the sidebar */}
           <ul>

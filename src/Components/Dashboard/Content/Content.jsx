@@ -2,6 +2,7 @@ import React from "react";
 // import reactDom from "react-dom";
 // import { Link } from "react-router-dom";
 import logo from "./cat-svgrepo-com.svg";
+import {Button} from "react-bootstrap";
 
 let rightNow = new Date();
 let newUpdates = [];
@@ -138,21 +139,21 @@ class Content extends React.Component {
   render() {
 
     return (
-      <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">
+      <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content animate__animated animate_flipInY">
         <div className="row">
           {!this.props.sidebar ? (
             <button
               // This button appears if the sidebar is disabled
-              className="btn btn-warning"
+              className="btn btn-warning animate__animated animate_flipInY"
               onClick={this.props.toggleSidebar}
             >
               Sidebar
             </button>
           ) : (
             // Otherwise, this button appears
-            <button className="btn btn-danger btn-disabled">
+            <Button variant="danger" onClick={this.handleShow}>
               thebest_thebest_thebest
-            </button>
+            </Button>
           )}
         </div>
 
