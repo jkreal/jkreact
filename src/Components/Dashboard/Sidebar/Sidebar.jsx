@@ -21,7 +21,7 @@ const Sidebar = (props) => {
       <div className="row">
         <div className="col-md-12 sidebar-col">
           {/* The Collapse button will not show if the screen is large enough. */}
-          {props.mobile > 1 ? (<Button onClick={props.toggleSidebar} variant="warning">Collapse</Button>) : ""}
+          {props.mobile > 1 ? "this nevedr happnes" : (<Button onClick={props.toggleSidebar} variant="warning">Collapse</Button>)}
 
           {/* This maps the listArray to the sidebar */}
           <ul>
@@ -29,7 +29,7 @@ const Sidebar = (props) => {
               return (
                 <ListItem
                   key={listArray[i] + i}
-                  title={listArray[i]}
+                  title={title}
                   message={messageArray[i]}
                   pos={i + 1}
                 ></ListItem>

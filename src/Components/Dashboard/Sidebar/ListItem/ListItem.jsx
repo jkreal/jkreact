@@ -24,7 +24,9 @@ class ListItem extends React.Component {
     }, 1000);
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    
+  }
 
   clickTask = (event) => {
     // event.target.style.minHeight = "50px";

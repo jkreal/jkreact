@@ -15,15 +15,15 @@ import Socials from "./Socials";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 // import { getDatabase } from "firebase/database";
-import { GoogleAuthProvider, FacebookAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
-const firebaseConfig = require('./firebase-config');
+const firebaseConfig = require("./firebase-config");
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 // var database = getDatabase(app);
 
 const googleProvider = new GoogleAuthProvider();
-const facebookProvider = new FacebookAuthProvider();
+// const facebookProvider = new FacebookAuthProvider();
 
 const auth = getAuth(app);
 
@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      mobileView: 5,
+      mobileView: 0,
       showSidebar: true,
     };
     this.updateViewState = this.updateViewState.bind(this);
@@ -48,12 +48,12 @@ class Dashboard extends React.Component {
   updateViewState() {
     let xwidth = document.documentElement.clientWidth;
     let yheight = document.documentElement.clientHeight;
-    console.log("the viewport is " + xwidth + "px by " + yheight + "px")
+    console.log("the viewport is " + xwidth + "px by " + yheight + "px");
 
     // Phone in portrait mode
     if (xwidth < 600) {
       this.setState({
-        mobileView: 0, 
+        mobileView: 0,
         showSidebar: false,
       });
       // Phone in Landscape mode
@@ -98,7 +98,6 @@ class Dashboard extends React.Component {
         showSidebar: true,
       });
     }
-
   }
 
   toggleSideBar() {
@@ -151,7 +150,10 @@ class Dashboard extends React.Component {
             )}
             <Switch>
               <Route path="/games">
-                <Games />
+                <Games
+                  mobile={this.state.mobileView}
+                  toggleSidebar={this.toggleSideBar}
+                />
               </Route>
               <Route path="/apps">
                 <Apps />
