@@ -10,8 +10,8 @@
     align-items: center;
     align-content: center;
 
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .listitem{
@@ -20,9 +20,6 @@
     min-height: 7em;
     margin-bottom: 0.7em;
 
-
-    align-self: center;
-    align-content: center;
     align-items: center;
 
 }

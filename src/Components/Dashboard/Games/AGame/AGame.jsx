@@ -4,27 +4,45 @@ import { Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class AGame extends React.Component {
+  animation0 = "animate__backInUp";
+  animation1 = "animate__fadeInBottomLeft";
   constructor(props) {
     super(props);
-    this.state = { hover: false, classnames: "", animation: "" };
+    this.state = {
+      hover: false,
+      classnames: "animate__animated ",
+      animation0: "",
+      animation1: "",
+      hidden: true
+    };
 
     this.clickGame = this.clickGame.bind(this);
     this.mouseEnter = this.mouseEnter.bind(this);
     this.mouseLeave = this.mouseLeave.bind(this);
   }
 
-  componentDidMount() {}
-  componentWillUnmount() {}
+  componentDidMount() {
+
+    setTimeout(() => {
+        this.setState({
+            animation0: this.animation0,
+            animation1: this.animation1,
+            hidden: false
+          });
+    }, this.props.delay );
+    
+  }
+  componentWillUnmount() {clearTimeout(this.componentDidMount())}
 
   clickGame = (event) => {
     // event.target.style.minHeight = "50px";
     this.setState({
-      animation: "animate__tada",
+      animation0: "animate__pulse",
     });
 
     setTimeout(() => {
       this.setState({
-        animation: "",
+        animation0: "",
       });
     }, 1000);
   };
@@ -33,18 +51,26 @@ class AGame extends React.Component {
   mouseLeave = (event) => {};
 
   render() {
+      if(this.state.hidden === false){
     return (
-      <Col xs sm="12" md lg="10" xl xxl="12" className="gameli">
+      <Col
+        xs
+        sm="12"
+        md
+        lg="6"
+        xl
+        xxl="6"
+        className={this.state.classnames + "" + this.state.animation0}
+      >
         <Card
           style={{
             width: "20rem",
             minHeight: "45vh",
-            marginBottom: "1.5em",
+            marginBottom: "2.0em",
             marginLeft: "auto",
             marginRight: "auto",
             boxShadow: "7px 5px",
           }}
-          className={"animate__animated " + this.state.animation}
         >
           <Card.Title
             style={{
@@ -52,7 +78,7 @@ class AGame extends React.Component {
               fontSize: "2.5em",
               border: "5px solid black",
               borderRadius: "20px",
-              borderBottomRightRadius: "0"
+              borderBottomRightRadius: "0",
             }}
           >
             {this.props.index + 1 + ". " + this.props.name}
@@ -97,7 +123,9 @@ class AGame extends React.Component {
           </Card.Body>
         </Card>
       </Col>
-    );
+    );} else {
+        return ("")
+    }
   }
 }
 

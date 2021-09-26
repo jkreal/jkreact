@@ -1,6 +1,7 @@
 import React from "react";
 
 import AGame from "./AGame";
+import GameController from "./GameController";
 import { Row, Col, Card, Button } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -23,17 +24,16 @@ class Games extends React.Component {
   }
 
   changeGameState(change) {
-    if(typeof change === "number"){
+    if (typeof change === "number") {
       this.setState({
-        gameState: change
+        gameState: change,
       });
     } else {
-      console.log("you must pass a number in changeGameState")
+      console.log("you must pass a number in changeGameState");
     }
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -45,40 +45,56 @@ class Games extends React.Component {
         xl="8"
         xxl="8"
         style={{
-          backgroundColor: "lightcoral",
+          backgroundColor: "#3c6fc2",
+
           overflowContent: "scroll",
           minHeight: "75vh",
-          maxHeight: "80vh"
+          maxHeight: "80vh",
         }}
         className="content"
       >
-        {this.props.sidebar === false ? (
-          <button
-            // This button appears if the sidebar is disabled
-            className="btn btn-warning animate__animated animate_flipInY"
-            onClick={this.props.toggleSidebar}
-          >
-            Sidebar
-          </button>
-        ) : (
-          // Otherwise, this button appears
-          <Button variant="danger">thebest_thebest_thebest</Button>
-        )}
-
         <Router>
-          <Row>
+          {this.props.sidebar === false ? (
+            <button
+              // This button appears if the sidebar is disabled
+              className="btn btn-warning"
+              onClick={this.props.toggleSidebar}
+            >
+              Sidebar
+            </button>
+          ) : (
+            // Otherwise, this button appears
+            <Button variant="danger">thebest_thebest_thebest</Button>
+          )}
+
+          <Switch>
             {this.state.games.map((name, index) => {
               return (
-                <AGame
-                  key={name + index}
-                  index={index}
-                  name={name}
-                  text={this.state.gameText[index]}
-                />
+                <Route
+                  key={index + name}
+                  path={"/games/" + name.toLowerCase().replace(" ", "")}
+                ><GameController playing={name.toLowerCase().replace(" ", "")}/></Route>
               );
             })}
-          </Row>
+            <Route path="/games/">
+              <Row>
+                {this.state.games.map((name, index) => {
+                  return (
+                    <AGame
+                      key={name + index}
+                      index={index}
+                      name={name}
+                      text={this.state.gameText[index]}
+                      delay={index * 250}
+                    />
+                  );
+                })}
+              </Row>
+
+            </Route>
+          </Switch>
         </Router>
+
       </Col>
     );
   }

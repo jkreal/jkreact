@@ -26,7 +26,7 @@ class ListItem extends React.Component {
   clickTask = (event) => {
     // event.target.style.minHeight = "50px";
     this.setState({
-      animation: "animate__tada",
+      animation: "animate__pulse",
     });
 
     setTimeout(() => {
