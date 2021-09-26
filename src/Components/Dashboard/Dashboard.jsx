@@ -17,7 +17,7 @@ import { getAnalytics } from "firebase/analytics";
 // import { getDatabase } from "firebase/database";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
-const firebaseConfig = require("./firebase-config");
+const firebaseConfig = require("./firebase-config.js");
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 // var database = getDatabase(app);
