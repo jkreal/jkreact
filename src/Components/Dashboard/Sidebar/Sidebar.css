@@ -6,7 +6,7 @@
 
     min-height: 80vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     align-content: center;
 
@@ -20,19 +20,25 @@
     min-height: 7em;
     margin-bottom: 0.7em;
 
-    padding-left: 0;
+
     align-self: center;
     align-content: center;
+    align-items: center;
 
 }
 
 .listtitle {
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    margin: auto;
 }
 
 .sidebar-col {
     margin: auto;
+
+    flex: 1;
+
+    align-content: center;
+    align-items: center;
 }
 
 .sidebar-button {

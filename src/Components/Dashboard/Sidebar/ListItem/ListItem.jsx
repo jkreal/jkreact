@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 class ListItem extends React.Component {
   constructor(props) {
@@ -16,16 +16,11 @@ class ListItem extends React.Component {
     this.mouseLeave = this.mouseLeave.bind(this);
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        animation: "",
-      });
-    }, 1000);
-  }
+  componentDidMount() {}
 
   componentWillUnmount() {
-    
+    // When the component is unmounted, we need to clear timers to avoid errors
+    clearTimeout(this.clickTask);
   }
 
   clickTask = (event) => {
@@ -38,14 +33,19 @@ class ListItem extends React.Component {
       this.setState({
         animation: "",
       });
-    }, 2000);
+
+      if (this.props.mobile < 2) {
+        this.props.toggleSidebar();
+      }
+    }, 1000);
   };
 
   mouseEnter = (event) => {
     // event.target.style.width = "100%";
     // event.target.style.border = "5px solid red"
+    
     this.setState({
-      hover: true
+      hover: true,
     });
   };
 
@@ -58,11 +58,10 @@ class ListItem extends React.Component {
   };
 
   render() {
+    
     return (
       <li
         onClick={this.clickTask}
-        onMouseEnter={this.mouseEnter}
-        onMouseLeave={this.mouseLeave}
         className={this.state.classnames + "" + this.state.animation}
         style={
           this.state.hover
@@ -72,7 +71,7 @@ class ListItem extends React.Component {
       >
         <Link
           style={{ color: "black", textDecoration: "none" }}
-          to={this.props.pos === 1 ? "/" : this.props.title.toLowerCase()}
+          to={this.props.pos === 1 ? "/" : "/" + this.props.title.toLowerCase()}
         >
           <h3
             className="listtitle"

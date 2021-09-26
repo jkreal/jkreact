@@ -2,7 +2,8 @@ import React from "react";
 import "./Sidebar.css";
 
 import ListItem from "./ListItem";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 // These populate the listitems in the sidebar.
 // Change order to localstorage and then cloud, somehow.
@@ -15,13 +16,28 @@ let messageArray = [
 ];
 
 const Sidebar = (props) => {
+  const location = useLocation();
+
   return (
     // The animation changes depending on screen size
-    <div className={"col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar animate__animated" + (props.mobile > 1 ? " animate__bounceInLeft" : " animate__slideInDown" )}>
+    <div
+      className={
+        "col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar animate__animated" +
+        (props.mobile > 1 ? " animate__bounceInLeft" : " animate__slideInDown")
+      }
+    >
       <div className="row">
         <div className="col-md-12 sidebar-col">
           {/* The Collapse button will not show if the screen is large enough. */}
-          {props.mobile > 1 ? "this nevedr happnes" : (<Button onClick={props.toggleSidebar} variant="warning">Collapse</Button>)}
+          {props.mobile > 1 ? (
+            <h1>Welcome to Hell</h1>
+          ) : (
+            <Button onClick={props.toggleSidebar} variant="warning">
+              Collapse
+            </Button>
+          )}
+
+          {/* This is where to add their profile */}
 
           {/* This maps the listArray to the sidebar */}
           <ul>
@@ -32,6 +48,9 @@ const Sidebar = (props) => {
                   title={title}
                   message={messageArray[i]}
                   pos={i + 1}
+                  mobile={props.mobile}
+                  toggleSidebar={props.toggleSidebar}
+                  location={location.pathname}
                 ></ListItem>
               );
             })}

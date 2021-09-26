@@ -153,6 +153,7 @@ class Dashboard extends React.Component {
                 <Games
                   mobile={this.state.mobileView}
                   toggleSidebar={this.toggleSideBar}
+                  sidebar={this.state.showSidebar}
                 />
               </Route>
               <Route path="/apps">
