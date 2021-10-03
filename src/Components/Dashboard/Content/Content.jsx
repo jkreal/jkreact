@@ -2,7 +2,7 @@ import React from "react";
 // import reactDom from "react-dom";
 // import { Link } from "react-router-dom";
 import logo from "./cat-svgrepo-com.svg";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 let rightNow = new Date();
 let newUpdates = [];
@@ -137,7 +137,6 @@ class Content extends React.Component {
   }
 
   render() {
-
     return (
       <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content animate__animated animate_flipInY">
         <div className="row">
@@ -195,7 +194,7 @@ class Content extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
         </a>
 
-            {/* This is the text at the bottom of the page */}
+        {/* This is the text at the bottom of the page */}
         <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
           {this.state.timeLeft < 0 ? (
             <a
@@ -203,7 +202,8 @@ class Content extends React.Component {
               href="https://raft-wars.com/raftwars"
             >
               {/* Text when the difference in time is negative, or has already expired */}
-              Humanity can, to be completely honest with you, just go fuck itself. Except you; you're cool.
+              Humanity can, to be completely honest with you, just go fuck
+              itself. Except you; you're cool.
             </a>
           ) : (
             <a
@@ -211,7 +211,8 @@ class Content extends React.Component {
               href="https://raft-wars.com/raftwars"
             >
               {/* This text shows while the timer still has time left */}
-              Humanity can, to be completely honest with you, just go fuck itself. Except you; you're cool.
+              Humanity can, to be completely honest with you, just go fuck
+              itself. Except you; you're cool.
             </a>
           )}
         </h1>

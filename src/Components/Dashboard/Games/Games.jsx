@@ -2,7 +2,7 @@ import React from "react";
 
 import AGame from "./AGame";
 import GameController from "./GameController";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // import {TicTacToe, Trivia, RPG, Hangman, Casino} from "./Games/index.js";

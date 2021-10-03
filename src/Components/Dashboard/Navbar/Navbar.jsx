@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <div className="row navbar-row">
-      <img onClick={doTap} src={logo} alt="whatdoyoumean" id="logo" className="logo animate__animated animate__flipInY animate__delay-2s" />
+      <img onClick={doTap} src={logo} alt="whatdoyoumean" id="logo" className="logo animate__animated animate__flipInY" />
     </div>
   );
 };

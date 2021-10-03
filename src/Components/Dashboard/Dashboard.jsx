@@ -157,10 +157,18 @@ class Dashboard extends React.Component {
                 />
               </Route>
               <Route path="/apps">
-                <Apps />
+                <Apps
+                  mobile={this.state.mobileView}
+                  toggleSidebar={this.toggleSideBar}
+                  sidebar={this.state.showSidebar}
+                />
               </Route>
               <Route path="/socials">
-                <Socials />
+                <Socials
+                  mobile={this.state.mobileView}
+                  sidebar={this.state.showSidebar}
+                  toggleSideBar={this.toggleSideBar}
+                />
               </Route>
               <Route path="/">
                 <Content

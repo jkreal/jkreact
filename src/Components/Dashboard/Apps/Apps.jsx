@@ -1,19 +1,30 @@
 import React from "react";
+import { Row, Col, Button } from "react-bootstrap";
 
 class Apps extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-        }
-    }
-
-
-    render() {
-        return (
-            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8 content">Apps</div>
-          );
-    }
+  render() {
+    return (
+      <Col>
+        {this.props.sidebar === false ? (
+          <button
+            // This button appears if the sidebar is disabled
+            className="btn btn-warning"
+            onClick={this.props.toggleSidebar}
+          >
+            Sidebar
+          </button>
+        ) : (
+          // Otherwise, this button appears
+          ""
+        )}
+      </Col>
+    );
+  }
 }
 
 export default Apps;

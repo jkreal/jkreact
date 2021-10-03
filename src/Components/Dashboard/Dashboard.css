@@ -114,6 +114,19 @@ body {
     /* text-shadow: 2px 2px; */
 }
 
+.content-title{
+    font-family: 'Dancing Script', cursive; 
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 40px;
+    margin-top: 1em;
+    height: 1.5em;
+    font-size: 3.0em;
+}
+
 
 /* Media Queries -------------------------------------------------- */
 
