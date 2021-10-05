@@ -83,7 +83,7 @@ class Socials extends React.Component {
                   <a
                     rel="noreferrer"
                     target="_blank"
-                    href="https://github.com/jkrowden"
+                    href="https://github.com/jkreal"
                   >
                     <img
                       alt="notgithub"
@@ -96,7 +96,7 @@ class Socials extends React.Component {
                   <a
                     rel="noreferrer"
                     target="_blank"
-                    href="https://www.linkedin.com/in/jkrowden/"
+                    href="https://www.linkedin.com/in/jkreal/"
                   >
                     <img
                       alt="linkedinornot"
