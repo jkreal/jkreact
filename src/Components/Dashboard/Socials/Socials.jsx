@@ -149,7 +149,7 @@ class Socials extends React.Component {
                   <a
                     rel="noreferrer"
                     target="_blank"
-                    href="https://github.com/jkrowden"
+                    href="https://github.com/jkreal"
                   >
                     <div style={{ height: "20vh" }}></div>
                   </a>
@@ -166,7 +166,7 @@ class Socials extends React.Component {
                   <a
                     rel="noreferrer"
                     target="_blank"
-                    href="https://www.linkedin.com/in/jkrowden/"
+                    href="https://www.linkedin.com/in/jkreal/"
                   >
                     <div style={{ height: "20vh" }}></div>
                   </a>
