@@ -41,3 +41,16 @@
 .sidebar-button {
     
 }
+
+.sidebar-profile {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    background-color: whitesmoke;
+
+    border: 2px solid black;
+    border-radius: 30px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 40px;
+
+    box-shadow: 4px 4px;
+}

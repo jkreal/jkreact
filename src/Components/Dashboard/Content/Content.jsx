@@ -2,11 +2,11 @@ import React from "react";
 // import reactDom from "react-dom";
 // import { Link } from "react-router-dom";
 import logo from "./cat-svgrepo-com.svg";
-import { Button } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 
 let rightNow = new Date();
 let newUpdates = [];
-const countDown = new Date(2021, 9, 5, 0, 0, 0, 0);
+const countDown = new Date(2021, 9, 31, 0, 0, 0, 0);
 
 class Content extends React.Component {
   constructor(props) {
@@ -55,6 +55,7 @@ class Content extends React.Component {
     this.setState({
       animationIndex: newUpdates,
     });
+    console.log(this.state.animationIndex);
   }
 
   // This method is called whenever the timer counts down a second.
@@ -157,35 +158,35 @@ class Content extends React.Component {
         </div>
 
         {/* This h1 is where the timer is nested in */}
-        <h1 className="welcome-text animate__animated animate__flipInY animate__delay-1s">
+        <h1
+          className="welcome-text animate__animated animate__flipInY"
+          style={{ display: "flex", flexDirection: "row" }}
+        >
           {this.state.timeLeft > 0 ? (
-            <a
-              style={{ textDecoration: "none", color: "red" }}
-              href="https://www.youtube.com/watch?v=NESCd6IFfLM"
-            >
-              {/* Maps out the time remaining using the timeArray and animationIndex */}
-              {this.state.timeArray.map((digit, i) => {
-                return (
-                  <span
-                    className={
-                      this.state.animationIndex[0] <= i &&
-                      this.state.act === false
-                        ? "animate__animated animate__fadeIn"
-                        : ""
-                    }
-                    key={digit + Math.random()}
-                  >
-                    {/* This is what is actually in the time span */}
-                    {digit}
-                    {i % 2 === 1 && i < 6 ? ":" : ""}
-                  </span>
-                );
-              })}
-            </a>
+            <Row style={{margin: "auto"}}>
+              <a
+                style={{ textDecoration: "none", color: "black" }}
+                href="https://www.youtube.com/watch?v=NESCd6IFfLM"
+              >
+                {/* Maps out the time remaining using the timeArray and animationIndex */}
+                {this.state.timeArray.map((digit, i) => {
+                  return (
+                      <span key={digit + Math.random()}>
+                        {/* This is what is actually in the time span */}
+                        {digit}
+                        {i % 2 === 1 && i < 6 ? ":" : ""}
+                      </span>
+                  );
+                })}
+                <span style={{ color: "black", fontSize: "0.7em" }}>
+                  ...unitl Halloween
+                </span>
+              </a>
+            </Row>
           ) : (
             // End of the conditional
             // This is what is returned when there is no time left
-            <span>Welcome to my shitshow.</span>
+            <span>Welcome.</span>
           )}
         </h1>
 
@@ -202,8 +203,7 @@ class Content extends React.Component {
               href="https://raft-wars.com/raftwars"
             >
               {/* Text when the difference in time is negative, or has already expired */}
-              Humanity can, to be completely honest with you, just go fuck
-              itself. Except you; you're cool.
+              This is a site of the web. A "web"site, if you will.
             </a>
           ) : (
             <a
@@ -211,8 +211,7 @@ class Content extends React.Component {
               href="https://raft-wars.com/raftwars"
             >
               {/* This text shows while the timer still has time left */}
-              Humanity can, to be completely honest with you, just go fuck
-              itself. Except you; you're cool.
+              This is a site of the web. A "web"site, if you will.....
             </a>
           )}
         </h1>

@@ -18,6 +18,8 @@ let messageArray = [
 const Sidebar = (props) => {
   const location = useLocation();
 
+  let cat = "cat-5.png";
+  let profileImage = require("../../../assets/cats/" + cat);
   return (
     // The animation changes depending on screen size
     <div
@@ -30,7 +32,12 @@ const Sidebar = (props) => {
         <div className="col-md-12 sidebar-col">
           {/* The Collapse button will not show if the screen is large enough. */}
           {props.mobile > 1 ? (
-            <h1>Welcome to Hell</h1>
+            <div className="sidebar-profile">
+              <h1>Welcome, {props.username}</h1>
+              <img alt="notyourprofile" src={profileImage} />
+              <h2>Something funnyyy
+              </h2>
+            </div>
           ) : (
             <Button onClick={props.toggleSidebar} variant="warning">
               Collapse

@@ -182,6 +182,7 @@ p {
 }
 
 
+
 /* Media Queries -------------------------------------------------- */
 
 /* Extra small devices (phones, 600px and down) */
@@ -267,7 +268,7 @@ p {
     }
 
     .welcome-text {
-        width: 33%;
+        width: 70%;
     }
 
     .footer-text {
