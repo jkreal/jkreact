@@ -55,7 +55,6 @@ class Content extends React.Component {
     this.setState({
       animationIndex: newUpdates,
     });
-    console.log(this.state.animationIndex);
   }
 
   // This method is called whenever the timer counts down a second.

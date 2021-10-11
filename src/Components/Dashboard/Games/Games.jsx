@@ -73,10 +73,13 @@ class Games extends React.Component {
                 <Route
                   key={index + name}
                   path={"/games/" + name.toLowerCase().replace(" ", "")}
-                ><GameController playing={name.toLowerCase().replace(" ", "")}/></Route>
+                >
+                  <GameController
+                    playing={name.toLowerCase().replace(" ", "")}
+                  />
+                </Route>
               );
             })}
-            <Route path="/games/">
               <Row>
                 {this.state.games.map((name, index) => {
                   return (
@@ -90,11 +93,8 @@ class Games extends React.Component {
                   );
                 })}
               </Row>
-
-            </Route>
           </Switch>
         </Router>
-
       </Col>
     );
   }

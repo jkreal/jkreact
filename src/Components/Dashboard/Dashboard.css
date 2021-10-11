@@ -181,6 +181,11 @@ p {
     min-height: 30vh;
 }
 
+.content-title {
+    background-color: whitesmoke;
+    box-shadow: 4px 2px;
+}
+
 
 
 /* Media Queries -------------------------------------------------- */
