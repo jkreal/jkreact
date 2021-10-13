@@ -11,13 +11,14 @@ class Games extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      games: ["TicTacToe", "Trivia", "RPG Game", "Hangman", "Casino"],
+      games: ["Uno", "TicTacToe", "Trivia", "RPG Game", "Hangman", "Casino"],
       gameText: [
         "This is an example. This is not intended for human consumption.",
         "This product can expose you to chemicals including lead, which is known to the state of California...",
         "to cause cancer. For more information, go to www.P65Warnings.ca.gov",
         "That's a lot to read,",
         "Good thing we can just type whatever, huh?",
+        "Yeah that is pretty nice."
       ],
       gameState: 0,
     };
@@ -76,6 +77,7 @@ class Games extends React.Component {
                 >
                   <GameController
                     playing={name.toLowerCase().replace(" ", "")}
+                    mobile={this.props.mobile}
                   />
                 </Route>
               );

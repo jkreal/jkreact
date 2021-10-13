@@ -14,32 +14,46 @@ let messageArray = [
   "These probably don't work yet",
   "Or something like that",
   "Just in case",
-  "For when you want to change things"
+  "For when you want to change things",
 ];
 
 const Sidebar = (props) => {
   const location = useLocation();
   let cat = "cat-1-1.png";
-  let profile = require("../../assets/cats/" + cat);
+  let profile = require("../../assets/cats/" + cat).default;
 
   return (
     // The animation changes depending on screen size
     <div
-      style={{overflowContent: "scroll"}}
+      style={{ overflowContent: "scroll" }}
       className={
         "col-xs-12 col-sm-12 col-md-2 col-lg-2 sidebar animate__animated" +
         (props.mobile > 1 ? " animate__bounceInLeft" : " animate__slideInDown")
       }
     >
-      <div className="row" style={{overflowContent: "scroll"}} >
-        <div className="col-md-12 sidebar-col" style={{ height: "80vh", overflowContent: "scroll", overflow: "scroll"}}>
+      <div className="row" style={{ overflowContent: "scroll" }}>
+        <div
+          className="col-md-12 sidebar-col"
+          style={{
+            height: "80vh",
+            overflowContent: "scroll",
+            overflow: "scroll",
+          }}
+        >
           {/* The Collapse button will not show if the screen is large enough. */}
           {props.mobile > 1 ? (
             <div className="sidebar-profile">
-              <h1>Welcome, {props.username}</h1>
-              <img alt="notyourprofile" src={profile2} style={{width: "50%"}} />
-              <h2>Something funnyyy
-              </h2>
+              <h1 style={{ marginBottom: "-1.3em" }}>
+                <span style={{fontFamily: "Dancing Script"}}>Username</span>
+              </h1>
+              <span>0p</span>
+              <img
+                alt="notyourprofile"
+                src={profile2}
+                style={{ width: "50%" }}
+              />
+              <span>0g</span>
+              <h2>Something funnyyy</h2>
             </div>
           ) : (
             <Button onClick={props.toggleSidebar} variant="warning">

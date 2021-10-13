@@ -113,6 +113,16 @@ body {
     font-family: 'Concert One', cursive;
     /* text-shadow: 2px 2px; */
 }
+/* 
+.game-window{
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+} */
 
 .content-title{
     font-family: 'Dancing Script', cursive; 
@@ -186,6 +196,10 @@ p {
     box-shadow: 4px 2px;
 }
 
+
+span {
+    font-family: 'Concert One';
+}
 
 
 /* Media Queries -------------------------------------------------- */
