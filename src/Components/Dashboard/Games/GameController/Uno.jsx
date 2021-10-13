@@ -1,26 +1,45 @@
 import React from "react";
 
-
-
 import { Col, Row, Container } from "react-bootstrap";
-const unodeck = require('./assets/uno/Unodeck').default
+const unodeck = require("./assets/uno/Unodeck").default;
 class Uno extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       layout: [0, 0, 0],
-      layout1: [0, 0, 0]
+      layout1: [0, 0, 0],
+      classes: "animate__animated animate__",
+      animations: ["bounceInLeft", "bounceInRight"],
     };
+
+    this.rtd = this.rtd.bind(this);
+    this.rng = this.rng.bind(this);
+  }
+
+  rtd = (min, max, odds) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let calc = Math.random() * (max - min + 1) + min;
+    if (calc > (odds * max)) {
+        console.log("lookds winn" + calc)
+        return true;
+    } else {
+        console.log('try againnn')
+        return false;
+    }
+  };
+
+  rng = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   startGame = () => {};
 
   render() {
     return this.props.mobile !== 0 ? (
-      <Container
-        className="game-window"
-        style={this.props.view}
-      >
+      <Container className="game-window" style={this.props.view}>
         {this.state.layout.map((i, index) => {
           return (
             <Row
@@ -29,19 +48,29 @@ class Uno extends React.Component {
             >
               {this.state.layout1.map((j, jndex) => {
                 return (
-                  <Col key={jndex + "-" + i} style={{ margin: "auto" }}>
+                  <Col
+                    className={
+                      "animate__animated animate__" +
+                      (this.rtd(0, 99, .5 ) === true ? this.state.animations[0] : this.state.animations[1])
+                    }
+                    key={jndex + "-" + i}
+                    style={{ margin: "auto" }}
+                  >
                     {index}, {jndex}
-                    {unodeck.name}
-                    <img src={unodeck[jndex].image} />
+                    {typeof unodeck[this.rng(0,54)].value}
+                    <img src={unodeck[this.rng(0,54)].image} />
                   </Col>
                 );
               })}
             </Row>
           );
         })}
+        <Row style={{bottom: "0"}}>lkawneflk</Row>
       </Container>
     ) : (
-      <Container><h1>Please flip your phone to play this game!</h1></Container>
+      <Container>
+        <h1>Please flip your phone to play this game! Turn it back around to get back to the menu.</h1>
+      </Container>
     );
   }
 }

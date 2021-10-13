@@ -16,6 +16,8 @@ const fullscreen = {
   left: "0",
   right: "0",
   top: "0",
+  bottom: "0",
+  margin: "auto",
   width: "100%",
   overflow: "hidden",
   backgroundColor: "white",
@@ -33,23 +35,31 @@ class GameController extends React.Component {
     super(props);
     this.state = {
       playing: this.props.playing,
-      fullscreen: false
+      fullscreen: true,
     };
     this.toggleView = this.toggleView.bind(this);
   }
 
   toggleView() {
     this.setState({
-        fullscreen: !fullscreen
+      fullscreen: !fullscreen,
     });
   }
 
   renderSwitch(param) {
     switch (param) {
       case "uno":
-        return <Uno mobile={this.props.mobile} view={this.state.fullscreen === true ? this.fullscreen : this.windowed } toggleView={this.toggleView} />;
+        return (
+          <Uno
+            mobile={this.props.mobile}
+            view={
+              this.props.mobile > 1 ? windowed : fullscreen
+            }
+            toggleView={this.toggleView}
+          />
+        );
       case "trivia":
-        return <Trivia mobile={this.props.mobile}  />;
+        return <Trivia mobile={this.props.mobile} />;
       case "tictactoe":
         return <TicTacToe mobile={this.props.mobile} />;
       case "rpg":
