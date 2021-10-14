@@ -22,6 +22,7 @@ const fullscreen = {
   overflow: "hidden",
   backgroundColor: "white",
   border: "4px solid black",
+  top: "25vh"
 };
 
 const windowed = {
