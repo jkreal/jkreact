@@ -15,19 +15,20 @@ const fullscreen = {
   position: "absolute",
   left: "0",
   right: "0",
-  top: "0",
+  // top: "0",
   bottom: "0",
   margin: "auto",
   width: "100%",
   overflow: "hidden",
   backgroundColor: "white",
-  border: "2px solid black",
+  border: "4px solid black",
 };
 
 const windowed = {
   width: "100%",
   height: "100%",
   border: "4px solid black",
+  backgroundColor: "whitesmoke"
 };
 
 class GameController extends React.Component {
@@ -56,6 +57,7 @@ class GameController extends React.Component {
               this.props.mobile > 1 ? windowed : fullscreen
             }
             toggleView={this.toggleView}
+            name={this.props.playing.toUpperCase()}
           />
         );
       case "trivia":

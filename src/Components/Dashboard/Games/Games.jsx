@@ -54,7 +54,6 @@ class Games extends React.Component {
         }}
         className="content"
       >
-        <Router>
           {this.props.sidebar === false ? (
             <button
               // This button appears if the sidebar is disabled
@@ -96,7 +95,6 @@ class Games extends React.Component {
                 })}
               </Row>
           </Switch>
-        </Router>
       </Col>
     );
   }

@@ -69,7 +69,7 @@ class Uno extends React.Component {
       </Container>
     ) : (
       <Container>
-        <h1>Please flip your phone to play this game! Turn it back around to get back to the menu.</h1>
+        <h1 style={{}}>Please turn your phone over to play {this.props.name}! Turn it back to PORTRAIT MODE to get back to this screen!</h1>
       </Container>
     );
   }
