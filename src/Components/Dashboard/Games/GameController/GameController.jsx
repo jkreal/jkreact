@@ -11,7 +11,7 @@ import Uno from "./Uno";
 let gameCount = [1, 2, 3, 4, 5, 6];
 
 const fullscreen = {
-  height: "100%",
+  height: "110vh",
   position: "absolute",
   left: "0",
   right: "0",
