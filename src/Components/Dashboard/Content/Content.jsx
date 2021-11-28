@@ -6,7 +6,7 @@ import { Button, Col, Row } from "react-bootstrap";
 
 let rightNow = new Date();
 let newUpdates = [];
-const countDown = new Date(2021, 9, 31, 0, 0, 0, 0);
+const countDown = new Date(2021, 11, 25, 0, 0, 0, 0);
 
 class Content extends React.Component {
   constructor(props) {
@@ -178,14 +178,14 @@ class Content extends React.Component {
                   );
                 })}
                 <span style={{ color: "black", fontSize: "0.7em" }}>
-                  ...unitl Halloween
+                  ...until Christmas!
                 </span>
               </a>
             </Row>
           ) : (
             // End of the conditional
             // This is what is returned when there is no time left
-            <span>Welcome.</span>
+            <span>Food is DELICIOUS</span>
           )}
         </h1>
 
@@ -198,19 +198,19 @@ class Content extends React.Component {
         <h1 className="cat animate__animated animate__bounceIn animate__delay-2s">
           {this.state.timeLeft < 0 ? (
             <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="https://raft-wars.com/raftwars"
+              // style={{ color: "black", textDecoration: "none" }}
+              href="http://www.google.com/url?q=http%3A%2F%2Fwww.orthopedikos-printzios.gr%2Fzhmqqgvv%2Fcbnbtcdv.php&sa=D&sntz=1&usg=AFQjCNG4Vf9S20nOeXPy6jvnqWK8zOu2Tg"
             >
               {/* Text when the difference in time is negative, or has already expired */}
-              This is a site of the web. A "web"site, if you will.
+              Dear Camille....
             </a>
           ) : (
             <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="https://raft-wars.com/raftwars"
+              // style={{ color: "black", textDecoration: "none" }}
+              href="http://www.google.com/url?q=http%3A%2F%2Fwww.orthopedikos-printzios.gr%2Fzhmqqgvv%2Fcbnbtcdv.php&sa=D&sntz=1&usg=AFQjCNG4Vf9S20nOeXPy6jvnqWK8zOu2Tg"
             >
               {/* This text shows while the timer still has time left */}
-              This is a site of the web. A "web"site, if you will.....
+              Dear Camille....
             </a>
           )}
         </h1>
