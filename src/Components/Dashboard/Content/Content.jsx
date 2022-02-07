@@ -199,18 +199,18 @@ class Content extends React.Component {
           {this.state.timeLeft < 0 ? (
             <a
               // style={{ color: "black", textDecoration: "none" }}
-              href="http://www.google.com/url?q=http%3A%2F%2Fwww.orthopedikos-printzios.gr%2Fzhmqqgvv%2Fcbnbtcdv.php&sa=D&sntz=1&usg=AFQjCNG4Vf9S20nOeXPy6jvnqWK8zOu2Tg"
+              // href="http://www.google.com/url?q=http%3A%2F%2Fwww.orthopedikos-printzios.gr%2Fzhmqqgvv%2Fcbnbtcdv.php&sa=D&sntz=1&usg=AFQjCNG4Vf9S20nOeXPy6jvnqWK8zOu2Tg"
             >
               {/* Text when the difference in time is negative, or has already expired */}
-              Dear Camille....
+              Don't go THAT crazy, bro.
             </a>
           ) : (
             <a
               // style={{ color: "black", textDecoration: "none" }}
-              href="http://www.google.com/url?q=http%3A%2F%2Fwww.orthopedikos-printzios.gr%2Fzhmqqgvv%2Fcbnbtcdv.php&sa=D&sntz=1&usg=AFQjCNG4Vf9S20nOeXPy6jvnqWK8zOu2Tg"
+              
             >
               {/* This text shows while the timer still has time left */}
-              Dear Camille....
+              Don't go THAT crazy, bro.
             </a>
           )}
         </h1>
